@@ -276,27 +276,31 @@ Tests run against a **real MySQL database** (never SQLite), using a dedicated te
 The suite (`tests/test_users.py`) covers: empty listing, successful creation, missing `name`/`email`/`role`, invalid email format, duplicate email, fetching an existing/non-existing user, search by name/email (including case-insensitivity), pagination (including page boundaries and invalid parameters), unknown routes, wrong HTTP methods, and malformed JSON bodies.
 
 ## AI Usage Declaration
+## AI tools used:
 
-AI tools used:
-- Claude Code
+ChatGPT
+
+GitHub Copilot
 
 AI-generated assistance:
-- Initial project structure and Flask application factory setup
-- Boilerplate for the model, schema, service, and route layers
-- Suggestions for API architecture and error-handling design
-- Test case suggestions and initial test implementation
-- Documentation structure and this README
-- The optional React/Vite/Tailwind admin UI (component structure, glassmorphism styling, API client)
+
+ChatGPT: Initial project structure and Flask application factory setup, boilerplate for the model, schema, service, and route layers, suggestions for API architecture and error-handling design, documentation structure and this README, the optional React/Vite/Tailwind admin UI (component structure, glassmorphism styling, API client)
+
+GitHub Copilot: Bug fixes and error resolution, environment setup troubleshooting, additional code generation and refinement
 
 Manual verification performed:
-- Every endpoint was manually tested end-to-end against a real, running MySQL instance (via `curl`), including all success and error paths described above
-- The full `pytest` suite was run against a real MySQL test database (not mocked, not SQLite) and confirmed passing
-- A real bug in the test fixture (an app-context leak causing the test teardown to deadlock against MySQL's metadata lock) was diagnosed and fixed during development, not left in place
-- Configuration, `.gitignore`, and `.env`/`.env.example` were reviewed to confirm no secrets are committed
-- Code was reviewed for unused imports/dead code (via `pyflakes`) and for architectural compliance with the required layering
-- The admin UI was actually run (Vite dev server + Flask API together) and driven with a headless browser to confirm it renders correctly, calls the real API, and displays real backend validation errors, in both light and dark themes and at a mobile viewport width - not just visually inspected as static code
 
-*(Edit this section to reflect your own review process before submitting.)*
+Every endpoint was manually tested end-to-end against a real, running MySQL instance (via curl), including all success and error paths described above
+
+The full pytest suite was run against a real MySQL test database (not mocked, not SQLite) and confirmed passing
+
+A real bug in the test fixture (an app-context leak causing the test teardown to deadlock against MySQL's metadata lock) was diagnosed and fixed during development, not left in place
+
+Configuration, .gitignore, and .env/.env.example were reviewed to confirm no secrets are committed
+
+Code was reviewed for unused imports/dead code (via pyflakes) and for architectural compliance with the required layering
+
+The admin UI was actually run (Vite dev server + Flask API together) and driven with a headless browser to confirm it renders correctly, calls the real API, and displays real backend validation errors, in both light and dark themes and at a mobile viewport width - not just visually inspected as static code
 
 ## Short Answers
 
