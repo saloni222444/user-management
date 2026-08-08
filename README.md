@@ -332,7 +332,7 @@ This is deliberately more than the current assignment needs - the point is the a
 - **Security headers** and an explicit **CORS policy** (currently not needed since there's no frontend consuming this cross-origin).
 - **Environment-specific configuration** (separate settings and credentials per environment, already partly in place via `config.py`).
 
-## Interview Explanation
+## Explanation
 
 **1. How a request flows through the application**
 A request hits a Flask route (e.g. `POST /users`). The route reads the JSON body, hands it to the validation schema, and - if valid - calls a function in the service layer. The service layer talks to the database through the SQLAlchemy model and returns a plain dictionary. The route wraps that dictionary in the standard `{"success": true, "data": ...}` shape and returns it as JSON. If anything goes wrong at any step, an exception is raised and a central error handler turns it into a JSON error response with the right HTTP status code.
